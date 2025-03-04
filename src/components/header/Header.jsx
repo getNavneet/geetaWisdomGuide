@@ -9,6 +9,4 @@ function Header() {
   );
 }
 
-
-// rgb(154, 52, 18)
 export default Header;

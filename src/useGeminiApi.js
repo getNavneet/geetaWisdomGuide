@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Note: In a production environment, this should be handled securely
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
+// const API_KEY = AIzaSyDwWWfqjO92Bq0ZOhQexiJDmYdfS7IfHeQ
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export async function getGeminiResponse(userProblem) {
@@ -10,8 +11,9 @@ export async function getGeminiResponse(userProblem) {
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-    
+    // const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
     const prompt = `
 You are an AI trained to provide guidance strictly based on the Bhagavad Gita. When a user submits a real-life problem, analyze it deeply and respond with wisdom from the Bhagavad Gita.
 
@@ -24,8 +26,8 @@ Motivational Closing: End with an uplifting and encouraging message inspired by 
 
 Guidelines:
 - Do not include any teachings outside of the Bhagavad Gita.
-- Keep the response **insightful, structured, and within 150-200 words**.
-- Ensure the tone remains **empathetic, wise, and motivating**.
+- Keep the response insightful, structured, and within 150-200 words.
+- Ensure the tone remains empathetic, wise, and motivating.
 - Avoid unnecessary elaboration; keep the focus on Bhagavad Gita's wisdom.
 
 User's Problem: "${userProblem}"
@@ -33,6 +35,7 @@ User's Problem: "${userProblem}"
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
+    console.log(response);
     return response.text();
   } catch (error) {
     if (!API_KEY) {

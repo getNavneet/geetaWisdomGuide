@@ -12,7 +12,7 @@ function Hero() {
       the Bhagavad Gita
     </span>
     <br />
-    timeless wisdom for modern life. 🚀
+    timeless wisdom for modern life.🚀
   </p>
 </div>
 
