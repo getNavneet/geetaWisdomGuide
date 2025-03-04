@@ -1,6 +1,8 @@
 import React from "react";
-
 const BhagavadGitaCard = () => {
+    const handleReadClick = () => {
+        window.open('../../src/assets/Bhagavad-gita-hindi.pdf', '_blank');
+      };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-orange-50 to-orange-700 text-white p-6">
       <div className="text-center max-w-lg">
@@ -9,9 +11,10 @@ const BhagavadGitaCard = () => {
           Timeless wisdom from ancient Sanskrit scripture, guiding humanity towards righteousness, purpose, and enlightenment.
         </p>
         <div className="mt-6 flex flex-col md:flex-row items-center gap-6">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg w-full md:w-auto">
+          <button  onClick={handleReadClick} className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg w-full md:w-auto">
             Start Reading →
           </button>
+          
           <button className="border border-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg w-full md:w-auto">
             Learn More
           </button>
