@@ -1,8 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Note: In a production environment, this should be handled securely
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
-// const API_KEY = AIzaSyDwWWfqjO92Bq0ZOhQexiJDmYdfS7IfHeQ
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export async function getGeminiResponse(userProblem) {
