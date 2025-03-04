@@ -1,7 +1,7 @@
 import React from "react";
 const BhagavadGitaCard = () => {
     const handleReadClick = () => {
-        window.open('../../src/assets/Bhagavad-gita-hindi.pdf', '_blank');
+        window.open('../../Bhagavad-gita-hindi.pdf', '_blank');
       };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-orange-50 to-orange-700 text-white p-6">
