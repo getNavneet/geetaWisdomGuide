@@ -1,7 +1,12 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from "@google/genai";
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
-const genAI = new GoogleGenerativeAI(API_KEY);
+// const genAI = new GoogleGenerativeAI(API_KEY);
+console.log("Using Gemini API Key:", API_KEY);
+const ai = new GoogleGenAI({
+  apiKey: API_KEY
+});
+
 
 export async function getGeminiResponse(userProblem) {
   if (!API_KEY) {
@@ -10,7 +15,7 @@ export async function getGeminiResponse(userProblem) {
 
   try {
     // const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
+    // const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
     const prompt = `
 You are an AI trained to provide guidance strictly based on the Bhagavad Gita. When a user submits a real-life problem, analyze it deeply and respond with wisdom from the Bhagavad Gita.
@@ -31,10 +36,13 @@ Guidelines:
 User's Problem: "${userProblem}"
 `;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    console.log(response);
-    return response.text();
+    const result = await ai.models.generateContent({
+    model: "gemini-2.5-flash",
+    contents: prompt,
+  });
+    // const response = await result.response;
+    console.log(result);
+    return result.text;
   } catch (error) {
     if (!API_KEY) {
       throw new Error('Missing API key. Please set VITE_GEMINI_API_KEY in your .env file');
