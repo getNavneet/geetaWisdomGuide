@@ -10,7 +10,7 @@ export async function getGeminiResponse(userProblem) {
 
   try {
     // const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
     const prompt = `
 You are an AI trained to provide guidance strictly based on the Bhagavad Gita. When a user submits a real-life problem, analyze it deeply and respond with wisdom from the Bhagavad Gita.
@@ -40,6 +40,6 @@ User's Problem: "${userProblem}"
       throw new Error('Missing API key. Please set VITE_GEMINI_API_KEY in your .env file');
     }
     console.error('Error generating response:', error);
-    throw new Error('Failed to get response from Gemini. Please try again later.');
+    throw new Error(`Failed to get response from Gemini. Please try again later. err= ${error.message}`);
   }
 }
