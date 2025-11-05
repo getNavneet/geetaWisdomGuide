@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
+import { BACKEND_API_URL } from '../../config';
 // Using a darker shade (950) for a richer, more modern contrast.
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
-
-    // --- Placeholder Subscription Logic ---
-    // In a real application, you would send this 'email' to a backend service (e.g., Mailchimp, database).
-    setTimeout(() => {
-      console.log(`Subscribed email: ${email}`);
-      setIsSubmitting(false);
-      setMessage('Thank you for subscribing! You will receive our latest updates.');
+     
+  const response= await axios.post(`${BACKEND_API_URL}/api/v1/contact/newsletter`, {
+    email
+  });
+    if (response.status === 200) {
+      setMessage('Thank you for subscribing!');
       setEmail('');
-    }, 1500);
-    // ----------------------------------------
-  };
+    } else {
+      setMessage('Subscription failed. Please try again.');
+    }
 
   // Inline SVG for the email icon
+  
+  }
   const MailIcon = () => (
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
@@ -39,7 +41,6 @@ const Footer = () => {
       <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
     </svg>
   );
-
   return (
     <footer className="w-full bg-orange-950 text-white pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6">
@@ -77,7 +78,7 @@ const Footer = () => {
                   className="hover:text-orange-100 flex items-center transition duration-200"
                 >
                   <MailIcon />
-                  contact@geetawisdomguide.com
+                  contact@gitawisdom.in
                 </a>
               </li>
             </ul>
