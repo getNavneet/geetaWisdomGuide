@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot as Lotus, Send, Loader2, AlertCircle,Clipboard  } from 'lucide-react';
-import { getGeminiResponse } from '../../useGeminiApi.js';  
+import { getServerResponse } from '../../utils/getServerResponse.js'
 import ReactMarkdown from 'react-markdown';
 import AboutGita from '../Intro/Intro.jsx';
 import GitaShlokas from '../sloks/Sloks.jsx';
@@ -36,7 +36,7 @@ function GuidanceForm() {
     setLoading(true);
     setError('');
     try {
-      const result = await getGeminiResponse(problem);
+      const result = await getServerResponse(problem);
       setResponse(result);
     } catch (error) {
       console.error('Error:', error);
