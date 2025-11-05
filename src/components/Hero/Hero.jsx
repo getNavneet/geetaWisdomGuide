@@ -2,7 +2,7 @@ import React from "react";
 import img1 from '../../assets/hero1.jpg'
 function Hero() {
     return (
-        <div style={{ backgroundColor: 'rgb(255, 244, 231)' }} className="flex flex-wrap flex-col md:justify-around items-center w-full  min-h-64 md:flex-row ">
+        <div className="bg-orange-100 flex flex-wrap flex-col md:justify-around items-center w-full  min-h-64 md:flex-row ">
          <div className="flex items-center justify-center md:w-[40%] p-2 m-2 mt-6 font-serif text-gray-900">
  
   <p className="text-3xl font-bold leading-[2.5rem] text-left">

@@ -51,7 +51,7 @@ function GuidanceForm() {
   };
 
   return (
-    <div className="min-h-screen  to-orange-100">
+    <div className="min-h-screen bg-gradient-to-r from-orange-100 to-orange-200">
 
       <main className="max-w-4xl mx-auto px-4 py-8">
       
